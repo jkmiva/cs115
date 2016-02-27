@@ -1,1 +1,1 @@
-This is for the assignments of CS115.
+Assignments of CS115.
