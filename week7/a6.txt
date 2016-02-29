@@ -1,0 +1,130 @@
+Exercise 1.1
+
+Node
+Element data;   // placeholder type, that can be anything we want
+refToNode next; // points to another node
+end Node
+
+List
+refToNode head;         // A reference to the first node.
+refToNode tail;         // A reference to the last node.
+Integer numElements;    // Number of elements in the list.
+end List
+/************************************************************************************/
+Algorithm reverse (rList)
+Pre: rList :: refToList
+Post: order of the the elements in rList are reversed
+Return: nothing
+
+if (rList->head == NULL || rList->head == rList->tail)
+    return
+refToNode pre = NULL
+refToNode temp
+rList->tail = rList->head
+while(rList->head->next != NULL)
+    temp = rList->head->next
+    rList->head->next = pre
+    pre = rList->head
+    rList->head = temp
+end while
+rList-head = pre
+
+
+Algorithm split(rList)
+Pre: rList :: refToList
+Post: rList keeps half of its elements, creates new list for the other half
+Return: a new refToList containing the other elements
+
+if (rList->head == NULL || rList->head == rList->tail)
+    return NULL
+refToList newList = allocate List
+newList->tail = rList->tail
+refToNode temp = rList->head
+for (int i=1; i < (rList->numElements)/2; i++)
+    temp = temp->next
+rList->tail = temp
+newList->head = temp->next
+newList->numElements = (rList->numElements)-(rList->numElements)/2
+rList->numElements = (rList->numElements)/2
+return newList
+/************************************************************************************/
+
+Exercise 1.2
+
+Algorithm test()
+//test_1 reverse()
+node c = {3,NULL};
+node b = {2,&c};
+node a = {1,&b};
+list iniList = {&a,&c,3};
+reverse(&iniList);
+node temp1 = iniList.head;
+for (int i=0;i<3;i++)
+    print temp->data
+    temp = temp->next
+end 
+    
+    
+//test_2 reverse()
+node singleNode = {99,NULL};
+list iniSingleList = {&singleNode,&singleNode,1};
+reverse(&iniSingleList);
+print singleNode.head->data;
+
+
+//test_1 split()
+node c1 = {3,NULL};
+node b1 = {2,&c1};
+node a1 = {1,&b1};
+list iniList_1 = {&a1,&c1,3};
+refToList newList = split(&iniList_1);
+refToNode temp2 = iniList_1.head;
+print temp2->numElements;
+while (temp2 != iniList_1.tail)
+    print temp2->data;
+    temp2 = temp2->next;
+end
+print temp2->data
+
+refToNode newTemp2 = newList->head;
+print newTemp2->numElements;
+while (newTemp2 != newList->tail)
+    print newTemp2->data;
+    newTemp2 = newTemp2->next;
+end
+print newTemp2->data;
+
+
+//test_2 split()
+node d2 = {4,NULL};
+node c2 = {3,&d2};
+node b2 = {2,&c2};
+node a2 = {1,&b2};
+list iniList_2 = {&a2, &d2, 4};
+refToList newList_2 = split(&iniList_2);
+refToNode temp3 = iniList_2.head;
+print temp3->numElements;
+while (temp3 != iniList_2.tail)
+    print temp3->data;
+    temp3 = temp3->next;
+end
+print temp3->data;
+
+refToNode newTemp3 = newList_2->head;
+print newTemp3->numElements;
+while (newTemp3 != newList_2->tail)
+    print newTemp3->data;
+    newTemp3 = newTemp3->next;
+end
+print newTemp3->data;
+
+
+//test_3 split()
+node s = {99,NULL};
+list iniList_3 = {&s,&s,1};
+refToList newList_3 = split(&iniList_3);
+if (newList_3 == NULL)
+    print can't split
+
+/************************************************************************************/
+
