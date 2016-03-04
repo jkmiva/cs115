@@ -1,3 +1,10 @@
+/***************************************************************************
+ Week 7 assignment
+ Name: Huang Jiaming
+ Student ID: 11207964
+ NSID: jih211
+ lecture session: Michael C. Horsch / Garrett
+ ****************************************************************************/
 // file: lab6test.cc
 // start testing Lab 6 material
 // This test assumes Element is int

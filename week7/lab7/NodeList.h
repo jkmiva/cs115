@@ -1,3 +1,10 @@
+/***************************************************************************
+ Week 7 assignment
+ Name: Huang Jiaming
+ Student ID: 11207964
+ NSID: jih211
+ lecture session: Michael C. Horsch / Garrett
+ ****************************************************************************/
 //
 // Simple Lists: the list contains a pointer to the head node and a count
 //

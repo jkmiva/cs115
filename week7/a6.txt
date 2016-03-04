@@ -1,3 +1,10 @@
+/***************************************************************************
+ Week 7 assignment
+ Name: Huang Jiaming
+ Student ID: 11207964
+ NSID: jih211
+ lecture session: Michael C. Horsch / Garrett
+ ****************************************************************************/
 Exercise 1.1
 
 Node
@@ -71,6 +78,9 @@ list iniSingleList = {&singleNode,&singleNode,1};
 reverse(&iniSingleList);
 print singleNode.head->data;
 
+//test_3 reverse()
+list iniSingleList_3 = {NULL,NULL,0}
+reverse(&iniSingleLIst_3);
 
 //test_1 split()
 node c1 = {3,NULL};
@@ -126,5 +136,186 @@ refToList newList_3 = split(&iniList_3);
 if (newList_3 == NULL)
     print can't split
 
+//test_4 split()
+list iniList_4 = {NULL,NULL,0}
+refToList newList_4 = split(&iniList_4);
+if (newList_4 == NULL)
+    print can't split
+
 /************************************************************************************/
+
+Exercise 2
+
+1.
+Student
+	refToChar firstName
+	refToChar lastName
+	Integer studentNumber
+	refToChar NSID
+	refToFloat assignments
+	Float midterm
+	Float final
+	Float finalNumeric
+	Char finalLetter
+end Student
+
+---
+Algorithm calculateAverageGrade(s)
+Pre:	s :: refToStudent
+Post:	calculates student average final grade
+Return:	student average numeric grade
+
+	if s != NULL
+	then
+		Float midterm <- s->midterm * 0.25
+		Float final <- s->final * 0.45
+		Float assignmentTotal <- 0
+	
+		for i from 0 to 10 by 1 do
+			assignmentTotal <- assignmentTotal + s->assignments[i]
+		end	
+	
+		assignmentTotal <- assignmentTotal / 10
+		assignmentTotal <- assignmentTotal * 0.30
+	
+		s->finalNumeric <- midterm + final + assignmentTotal
+		if s->finalNumeric >= 80
+			s->finalLetter <- 'A'
+		else if s >= 70
+			s->finalLetter <- 'B'
+		else if s >= 60
+			s->finalLetter <- 'C'
+		else if s >= 50
+			s->finalLetter <- 'D'
+		else
+			s->finalLetter <- 'F'
+			
+	done
+	return s->finalNumeric
+
+---
+
+---
+Algorithm displayFinalGrade(s)
+Pre:	s :: refToStudent
+Post:	Nothing
+Return:	Nothing
+
+	if s != NULL
+	then
+		print s->studentNumber
+		print s->finalNumeric
+		print s->finalLetter
+---
+
+2.
+/////in main() function, initialize the value of finalNumeric and finalLetter of all the Student structure.
+/////add two statements into displayStudentRecord(s) to show the finalNumberic and finalLetter.
+>in main() function , add displayFinalGrade(s) after calling calculateAverageGrade(s) function.
+
+
+3.nothing needs to change
+4. see above
+5. the compiler will report an error that the function is not declared. / external
+6. the compiler will report an warning that there are some unused variables. / internal
+7. the compiler will report an error that the variable is not declared. / internal
+
+/************************************************************************************/
+
+Exercise 3
+---
+Student
+	refToChar firstName
+	refToChar lastName
+	Integer studentNumber
+	refToChar NSID
+	refToFloat assignments
+	Float midterm
+	Float final
+	Float finalNumeric
+	Char finalLetter
+	refToStudent nextStudent
+end Student
+---
+List
+	refToStudent head
+	refToStudent tail
+	integer numElement
+end List
+---
+ListIterator
+	refToStudent nextElement
+end ListIterator
+---
+
+
+refToList rNewList = createList()								****** 1.
+
+while (0 < studentCount--)										****** 2.
+	refToStudent rNewStudent = readStudentRecordFromConsole()
+	insertList(rNewList,rNewStudent)
+end while
+
+refToListIterator rNewIterator = createIterator(rNewList)		****** 3.4.5
+float total = 0
+while (hasNext(rNewIterator)
+	refToStudent em = next(rNewIterator)
+	displayStudentRecord(em)
+	total += calculateAverageGrade(em)
+	displayFinalGrade(em)
+end while
+print total/studentCount
+
+destoryIterator(rNewIterator)									******6.7
+rNewIterator = nullptr
+rNewIterator = createIterator(rNewList)
+if (hasNext(rNewIterator))
+	em = next(rNewIterator)
+	ChangeAssignmentGradeForStudent(em, a, g)
+	displayStudentRecord(em)
+if (hasNext(rNewIterator))
+	em = next(rNewIterator)
+	ChangeExamGradeForStudent(em, 'M', e))
+	displayStudentRecord(em)
+if (hasNext(rNewIterator))
+	em = next(rNewIterator)
+	ChangeExamGradeForStudent(em, 'F', e))
+	displayStudentRecord(em)
+
+destoryIterator(rNewIterator)									******8
+rNewIterator = nullptr
+rNewIterator = createIterator(rNewList)
+total = 0
+while (hasNext(rNewIterator)
+	refToStudent em = next(rNewIterator)
+	total += calculateAverageGrade(em)
+end while
+print total/studentCount
+
+destoryIterator(rNewIterator)									******9.10
+rNewIterator = nullptr
+rNewIterator = createIterator(rNewList)
+total = 0
+while (hasNext(rNewIterator)
+	refToStudent em = next(rNewIterator)
+	ChangeAssignmentGradeForStudent(em, 5, 5)
+	total += calculateAverageGrade(em)
+end while
+print total/studentCount
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
