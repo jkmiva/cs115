@@ -1,0 +1,39 @@
+/***************************************************************************
+ Week 8 assignment
+ Name: Huang Jiaming
+ Student ID: 11207964
+ NSID: jih211
+ lecture session: Michael C. Horsch / Garrett
+ ****************************************************************************/
+2.The output:
+
+number of paths for 3x3 : 6
+number of paths for 4x4 : 20
+number of paths for 10x12 : 167960
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+3.
+The recursion function as follows:
+
+int marioCount(int x,int y){
+	if (x==1 || y==1)
+		return 1;
+	return marioCount(x-1,y)+marioCount(x,y-1);
+}
+
+the base case 'x==1 or y==1' means after recursion, the rectangular becomes '1 x m' or 'n x 1'.( m  belongs to [1,y], n belongs to [x,1]) 
+In these situations, the number of path is 1, so return 1.
+
+
+4.
+
+the number of paths from (0,0) to (x,y) equals the sum of numbers of paths from (0,0) to (x-1,y) and numbers of paths from (0,0) to (x,y-1).
+
+S(x,y) = S(x-1,y) + S(x,y-1)
+
+so, the problem size can become smaller, and finally, all the branches become (1,m) or (n,1).    m  belongs to [1,y], n belongs to [x,1]
+add all these base case together, we can get the result.
